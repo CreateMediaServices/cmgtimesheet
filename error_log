@@ -1,0 +1,21 @@
+[08-Jan-2018 14:59:18 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[09-Jan-2018 17:37:33 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[10-Jan-2018 17:39:33 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[10-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[11-Jan-2018 17:41:20 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[11-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[12-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[13-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[14-Jan-2018 09:23:25 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[14-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[15-Jan-2018 09:34:04 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[15-Jan-2018 15:45:02 UTC] PHP Parse error:  syntax error, unexpected 'http' (T_STRING) in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 75
+[16-Jan-2018 09:36:03 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
+[16-Jan-2018 11:40:22 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/createJobType.php on line 15
+[16-Jan-2018 11:52:35 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/time-tracking-new.php on line 53
+[16-Jan-2018 15:37:37 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 58
+[16-Jan-2018 15:37:41 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 58
+[16-Jan-2018 15:37:42 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 58
+[16-Jan-2018 15:38:29 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 56
+[16-Jan-2018 14:21:13 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/clientscreatemed/public_html/cmg/time-sheet/checkMissingDates.php on line 58
+[17-Jan-2018 09:39:55 ASIA/DUBAI] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/clientscreatemed/public_html/cmg/time-sheet/loadjobtype-new.php on line 12
