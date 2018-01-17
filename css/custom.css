@@ -135,6 +135,9 @@ label span{
 .form-sty--1 .c-form-item.colWidth{
     width: 100px;
 }
+.form-sty--1 .c-form-item.colWidth1{
+    width: 150px;
+}
 .form-sty--1 .c-form-item.js-jobtype{
     width: 300px;
 }
@@ -157,6 +160,13 @@ label span{
     list-style-type: none;
     background: #fff;    
     z-index: 999999;
+}
+.c-main-header .c-form-sty{
+    width: 100%;
+}
+.form-sty--1 .action{
+    width: auto;
+    float: right;
 }
 
 .c-main-header .header-col.panel-action.topMenu ul li a{    

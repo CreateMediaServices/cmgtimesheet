@@ -285,7 +285,7 @@ endwhile;
 		<option value="0">Select Job Title</option>
 	</select>
 </div>
-<div class="c-form-item js-JobID colWidth" style="display: none;">
+<div class="c-form-item js-JobID colWidth1" style="display: none;">
 	<label for="jobID">Job Number</label>
 	<input type="text" id="jobID" name="jobID" value="">
 	<strong>e.g. SC-EXXXXXX</strong>
@@ -308,7 +308,7 @@ endwhile;
 
 <div class="action">
 	<a href="javascript:void(0);" class="c-btn btn--emp js-SubmitBtn">
-		<i class="fa"></i>Add Time
+		Add Time
 	</a>
 
 	<input type="hidden" name="siteBaseURL" id="siteBaseURL"
