@@ -121,8 +121,8 @@ for($counter=0; $counter < sizeof($userEmail); $counter++ ){
         </tr>
     </table>";
 
-    //$emailSentTo = $userEmail[$counter];
-    $emailSentTo = 'shakeel.rehman@createmedia-group.com';
+    $emailSentTo = $userEmail[$counter];
+    //$emailSentTo = 'shakeel.rehman@createmedia-group.com';
     mail($emailSentTo, $emailSubject, $emailMessage, $emailHeaders,
             "-f no-reply@createmedia-group.com");
 
@@ -154,8 +154,8 @@ $emailMessage = "
 </html>
 ";
 
-//$emailSentTo = 'hina.khan@createmedia-group.com';
-$emailSentTo = 'shakeel.rehman@createmedia-group.com';
+$emailSentTo = 'hina.khan@createmedia-group.com';
+//$emailSentTo = 'shakeel.rehman@createmedia-group.com';
 mail($emailSentTo, $emailSubject, $emailMessage, $emailHeaders,
          "-f no-reply@createmedia-group.com");
 
