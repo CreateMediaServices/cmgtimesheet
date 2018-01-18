@@ -9,7 +9,7 @@ include( 'config.php' );
 $created_atValue = date("Y-m-d");
 $currentDate = new DateTime($created_atValue);
 
-$userSql = "SELECT * FROM cmg_user WHERE uActive=1";
+$userSql = "SELECT * FROM cmg_user WHERE uActive=1 AND uEmailStatus=1";
 $userResult = $db->query( $userSql );
 $userTotalRecords = $userResult->num_rows;
 
