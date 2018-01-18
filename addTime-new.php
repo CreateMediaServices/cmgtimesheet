@@ -25,7 +25,7 @@ endwhile;
 $jobHoursValue2 = ($jobHours + $jobHoursValue);
 
 //$created_atValue = date("Y-m-d H:i:s");
-$userNameValue = $_SESSION['uName'];
+// $userNameValue = $_SESSION['uName'];
 if($jobHoursValue2 > 12){
     echo("100");
 }else if($userNameValue){
