@@ -11,7 +11,7 @@ $jobHoursValue = $_POST['jobHours'];
 $recordID = $_POST['recordID'];
 $created_atValue = $_POST['jobDate'];
 
-if(isset( $_POST['jobVersion'] )){
+if(isset( $_POST['jobVersion'] ) && $_POST['jobVersion'] > 0 ){
     $jobVersionValue = $_POST['jobVersion'];
 }else{
     $jobVersionValue = "";    
