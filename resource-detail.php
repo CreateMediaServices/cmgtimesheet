@@ -38,6 +38,21 @@ unset($row);
 unset($result);
 unset($totalRecords);
 
+$sql = "SELECT * FROM cmg_dept";
+$result = $db->query( $sql );
+$totalRecords = $result->num_rows;
+
+while ( $row = $result->fetch_assoc() ):
+
+	$deptIDs = $row[ "id" ];
+	$deptName[$deptIDs] = $row[ "deptName" ];	
+endwhile;
+
+unset($sql);
+unset($row);
+unset($result);
+unset($totalRecords);
+
 $sql = "SELECT * FROM cmg_clients ORDER BY clientName";
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
