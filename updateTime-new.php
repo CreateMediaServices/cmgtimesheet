@@ -17,7 +17,8 @@ if(isset( $_POST['jobVersion'] )){
     $jobVersionValue = "";    
 }
 
-$sql = "SELECT * FROM cmg_timetracker WHERE jobDate='".$created_atValue."'";
+$sql = "SELECT * FROM cmg_timetracker 
+        WHERE jobDate='".$created_atValue."' AND id <>".$recordID;
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
 $jobHours = 0;
@@ -29,9 +30,9 @@ endwhile;
 $jobHours += $jobHoursValue;
 
 $userNameValue = $_SESSION['uName'];
-// if($jobHours > 12){
-//     echo("100");
-// }else if($userNameValue){
+if($jobHours > 13){
+    echo("100");
+}else if($userNameValue){
     try {
 
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -63,9 +64,9 @@ $userNameValue = $_SESSION['uName'];
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
-// }else{
-//     echo("101");
-// }
+}else{
+    echo("101");
+}
 
 
 ?>

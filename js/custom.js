@@ -240,7 +240,7 @@ $('.js-updateBtn').click(function () {
 
 	var clients = $('#clients2');
 	var jobID = $('#jobID2');
-	//var jobVersion = $('#jobVersion2');
+	var jobVersion = $('#jobVersion2');
 	var jobHours = $('#jobHours2');
 	var jobtype = $('#jobtype2');
 	var jobDate = $('#jobDate2');
@@ -248,12 +248,13 @@ $('.js-updateBtn').click(function () {
 	var recordID = $('#updateRecordID').val();
 	var siteBaseURL = $('#updateURL').val();
 	var targetURL = $('#targetURL').val();	
+	var clientCheck = $('#clientCheck').val();
 	var checkError = 0;
 
 	clients.parent().removeClass('error');
 	jobtype.parent().removeClass('error');
 	jobID.parent().removeClass('error');
-	//jobVersion.parent().removeClass('error');
+	jobVersion.parent().removeClass('error');
 	jobHours.parent().removeClass('error');
 	jobDate.parent().removeClass('error');
 
@@ -267,16 +268,15 @@ $('.js-updateBtn').click(function () {
 		checkError = 1;
 	}
 
-
-	if (jobID.val() == '-' && clients.val() == '20') {
+	if (jobID.val() == '' && clientCheck == '1') {
 		jobID.parent().addClass('error');
 		checkError = 1;
 	}
 
-//	if (jobVersion.val() == '-' && clients.val() == '20') {
-//		jobVersion.parent().addClass('error');
-//		checkError = 1;
-//	}
+	if (jobVersion.val() == '' && clientCheck == '1') {
+		jobVersion.parent().addClass('error');
+		checkError = 1;
+	}
 
 	if (jobHours.val() == "") {
 		jobHours.parent().addClass('error');
@@ -293,7 +293,7 @@ $('.js-updateBtn').click(function () {
 
 		var q = 'clients=' + clients.val();		
 		q += '&jobID=' + jobID.val();
-		//q += '&jobVersion=' + jobVersion.val();
+		q += '&jobVersion=' + jobVersion.val();
 		q += '&jobHours=' + jobHours.val();
 		q += '&jobtype=' + jobtype.val();
 		q += '&recordID=' + recordID;
@@ -421,8 +421,8 @@ $('.js-search-record').click(function () {
 
 	var clientName = $(this).parent().parent().find('.clientName').html();
 	var jobType = $(this).parent().parent().find('.jobType').html();
-	var jobID = $(this).parent().parent().find('.jobID').html();	
-	//var jobVersion = $(this).parent().parent().find('.jobVersion').html();
+	var jobNumber = $(this).parent().parent().find('.js-jobNumber').html();	
+	var jobVersion = $(this).parent().parent().find('.jobVersion').html();
 	var jobHours = $(this).parent().parent().find('.jobHours').html();
 	var jobDate = $(this).parent().parent().find('.jobDate').html();
 	var recordID = $(this).parent().find('.recordID').val();
@@ -435,12 +435,14 @@ $('.js-search-record').click(function () {
 	q += '&clientName=' + clientName;
 	q += '&jobType=' + jobType;
 	q += '&jobHours=' + jobHours;
+	q += '&jobVersion=' + jobVersion;
+	q += '&jobNumber=' + jobNumber;
 	q += '&recordJobTypeID=' + recordJobTypeID;
 	q += '&recordClientID=' + recordClientID;
 	q += '&jobDate=' + jobDate;
 
-	$('.js-JobID-2').fadeOut('fast');
-	//$('.js-JobVersion-2').fadeOut('fast');
+	$('.js-JobNumber-2').fadeOut('fast');
+	$('.js-jobVersion-2').fadeOut('fast');
 
 	$.ajax({
 		type: "POST",
@@ -452,31 +454,23 @@ $('.js-search-record').click(function () {
 			result = jQuery.parseJSON(result);
 
 			$('.js-clients-2').empty();
-			$('.js-jobtype-2').empty();
-			//$('.js-jobVersion-2').empty();
+			$('.js-jobtype-2').empty();			
 
             $('.js-clients-2').append(result.clients);
             $('.js-jobtype-2').append(result.jobType);
-            //$('.js-jobVersion-2').append(result.tplJobVersion);
-            $('.js-jobID-2').val(jobID);
+            $('#jobID2').val(result.jobNumber);
+            $('#jobVersion2').val(result.jobVersion);
             $('.js-jobHours-2').val(jobHours);
             $('.js-jobDate-2').val(jobDate);
 
-            if(jobID != '-'){
-            	$('.js-JobID-2').fadeIn('fast');
+            if(result.jobVersion > 0){            	
+
+            	$('.js-JobNumber-2').fadeIn('fast');
+            	$('.js-jobVersion-2').fadeIn('fast');
+            	
             }
-            //if(jobVersion != '-'){
-            //	$('.js-JobVersion-2').fadeIn('fast');
-            //}
-            
             
             $('.updateRecordID').val(recordID);
-                     
-            //jQuery('#totalPage').val(result.totalPage);
-            
-            // if( result.currentPage == result.totalPage || result.html == '' ){
-            //     jQuery('.js-load-competions').fadeOut('fast');                
-            // }
 
 		}
 	});
@@ -486,8 +480,7 @@ $('.js-search-record').click(function () {
 $('.js-search-delete').click(function () {
 
 	var recordID = $(this).parent().find('.recordID').val();
-    $('.updateRecordID').val(recordID);
-	alert(recordID);
+    $('.updateRecordID').val(recordID);	
 
 });
 
@@ -599,9 +592,8 @@ $(".js-clients").change(function () {
 
 				if(result.clientJobVersion == 1){
 					$('.js-JobID').fadeIn('slow');
-					$('.js-jobVersion').fadeIn('slow');
-					$('#clientCheck').val('1');
-					
+					$('.js-jobVersion').fadeIn('slow');					
+					$('#clientCheck').val('1');					
 				}
 			}
 		});
@@ -615,23 +607,49 @@ $(".js-clients").change(function () {
 $(".js-clients-2").change(function () {
 	var selectedItem = $(this).val();
 
-	$('.js-JobID-2').fadeOut();
-	//$('.js-JobVersion-2').fadeOut();
-
-	if (selectedItem == "19") {
-		$('.js-JobID-2').fadeIn('slow');
-	}
-	if (selectedItem == "20") {
-		$('.js-JobID-2').fadeIn('slow');
-		//$('.js-JobVersion-2').fadeIn('slow');
-	}
+	// $('.js-JobID-2').fadeOut();
+	// //$('.js-JobVersion-2').fadeOut();
 		
+	// var siteBaseURL = $('#clientBaseURL').val();
+	// var checkError = 0;
+
+	// if(selectedItem == 0 ){
+	// 	checkError = 1;		
+	// }
+
+	// if (checkError == 0) {
+
+		
+	// 	var q = 'clients=' + selectedItem;		
+
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: siteBaseURL,
+	// 		data: q,
+	// 		cache: false,
+	// 		success: function (result) {	
+	// 				result = jQuery.parseJSON(result);			
+	// 				$('#jobtype2').empty();
+	// 				$('#jobtype2').append(result.html);				
+	// 		}
+	// 	});
+
+	// }
+
+
+
+	$('.js-JobID-2').fadeOut();
+	$('.js-jobVersion-2').fadeOut();
+	$('.js-cName').fadeOut();
+	$('.js-jobtype').fadeIn('slow');
+
+	$('#clientCheck').val('0');
+	
 	var siteBaseURL = $('#clientBaseURL').val();
 	var checkError = 0;
 
 	if(selectedItem == 0 ){
-		checkError = 1;
-		
+		checkError = 1;		
 	}
 
 	if (checkError == 0) {
@@ -645,9 +663,17 @@ $(".js-clients-2").change(function () {
 			data: q,
 			cache: false,
 			success: function (result) {	
-					result = jQuery.parseJSON(result);			
-					$('#jobtype2').empty();
-					$('#jobtype2').append(result.html);				
+
+				result = jQuery.parseJSON(result);
+                	
+				$('#jobtype2').empty();
+				$('#jobtype2').append(result.html);
+
+				if(result.clientJobVersion == 1){
+					$('.js-JobID-2').fadeIn('slow');
+					$('.js-jobVersion-2').fadeIn('slow');
+					$('#clientCheck').val('1');					
+				}
 			}
 		});
 

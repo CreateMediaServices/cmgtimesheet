@@ -3,11 +3,33 @@
 $clientNameSelected = $_POST['clientName'];
 $jobTypeSelected = $_POST['jobType'];
 $recordJobTypeID = $_POST['recordJobTypeID'];
-//$jobVersionSelected = $_POST['jobVersion'];
+$jobVersionSelected = $_POST['jobVersion'];
+$jobNumberSelected = $_POST['jobNumber'];
+
+$jobVersionSelected = 0;
+if( $_POST['jobVersion'] != ""){
+	$jobVersionSelected = $_POST['jobVersion'];
+}
 
 include( 'config.php' );
 
-$sql = "SELECT * FROM cmg_clients ORDER BY clientName";
+$sql = "SELECT * FROM cmg_dept";
+$result = $db->query( $sql );
+$totalRecords = $result->num_rows;
+
+while ( $row = $result->fetch_assoc() ):
+
+	$deptIDs = $row[ "id" ];
+	$deptName[$deptIDs] = $row[ "deptName" ];	
+endwhile;
+
+unset($sql);
+unset($row);
+unset($result);
+unset($totalRecords);
+
+$sql = "SELECT * FROM cmg_clients 
+		WHERE clientStatus=0  ORDER BY clientName";
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
 $counter = 0;
@@ -28,14 +50,14 @@ $counter = 0;
 if ($totalRecordsSelect > 0) :
 	while ( $rowSelect = $resultSelect->fetch_assoc() ):
 		$jobTypeID[ $counter ] = $rowSelect[ "id" ];
-		$jobTypeName[ $counter ] = $rowSelect[ "jobTitle" ];		
+		$jobDeptID[$jobTypeID[$counter]] = $rowSelect[ "deptID" ];	
+		$jobTypeName[ $jobTypeID[ $counter ] ] = $rowSelect[ "jobTitle" ];		
 		$counter++;
 	endwhile;
 endif;
 
 $tplClients = '<option value="0">Select client</option>';
 $tplJobType = '<option value="0">Select Job Type</option>';
-$tplJobVersion = '<option value="-"></option>';
 
 //
 $counter=0;
@@ -61,37 +83,24 @@ while($counter < sizeof($jobTypeID)):
 		$selected = 'selected';
 	// endif;
 
+
+	$jobDetail = $deptName[$jobDeptID[$jobTypeID[$counter]]]
+					.' - '.$jobTypeName[$jobTypeID[$counter]];
+
 $tplJobType .= <<<EOT
-	<option value="$jobTypeID[$counter]" $selected>$jobTypeName[$counter]</option>
+	<option value="$jobTypeID[$counter]" $selected>$jobDetail</option>
 EOT;
 	$counter++;
 endwhile;
 
+$tplJobVersion = $jobVersionSelected;
+$tplJobNumber = $jobNumberSelected;
 
-//
-//if($jobVersionSelected == "1-4" ){
-//	$tplJobVersion .= '<option value="1-4" selected>1-4</option>';
-//}else{
-//	$tplJobVersion .= '<option value="1-4">1-4</option>';
-//}
+$arrReturn['clients'] = $tplClients;
+$arrReturn['jobType'] = $tplJobType;	
+$arrReturn['jobNumber'] = $tplJobNumber;
+$arrReturn['jobVersion'] = $tplJobVersion;
 
-
-//if($jobVersionSelected == "5+" ){
-//	$tplJobVersion .= '<option value="5+" selected>5+</option>';
-//}else{
-//	$tplJobVersion .= '<option value="5+">5+</option>';
-//}
-
-
-	$arrReturn['clients'] = $tplClients;
-	$arrReturn['jobType'] = $tplJobType;	
-	//$arrReturn['jobVersion'] = $tplJobVersion;	
-
-    echo json_encode($arrReturn);
-
+echo json_encode($arrReturn);
 
 ?>
-
-
-
-

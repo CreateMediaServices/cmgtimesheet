@@ -168,8 +168,8 @@ unset($totalRecords);
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/datatables.min.css">
 <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" href="css/main.css?version=0.001">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/custom.css?version=0.002">
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 <style>
@@ -399,7 +399,7 @@ if ($totalRecordsSelect > 0) :
 			<td class="jobType">
 				<?= $jobDetail; ?>
 			</td>
-			<td class="jobID"><?php echo $jobIDSelect[$counter]; ?></td>	
+			<td class="jobID js-jobNumber"><?php echo $jobIDSelect[$counter]; ?></td>	
 			<td class="jobVersion"><?php echo $jobVersionSelect[$counter]; ?></td>
 			<td class="jobHours"><?php echo $jobHoursSelect[$counter]; ?></td>
 			<td class="jobDate"><?php echo $uDateSelect[$counter]; ?></td>
@@ -446,24 +446,26 @@ endif;
 </div>
 
 <div class="c-form-item large">
-	<label for="jobtype2">Job Type</label>
+	<label for="jobtype2">Job Title</label>
 	<select style="width: 100%" name="jobtype2" id="jobtype2"
 		class="js-jobtype-2">
 		<option value="0">Select Job Type</option>
 	</select>
 </div>
 
-<div class="c-form-item js-JobID-2 small" style="display: none;">
+<div class="c-form-item js-JobID-2 js-JobNumber-2 colWidth1" style="display: none;">
 	<label for="jobID2">Job Number</label>
 	<input type="text" id="jobID2" name="jobID2" value="-">
+	<strong>e.g. SC-EXXXXXX</strong>
 </div>
 
-<div class="c-form-item js-jobVersion-2 small" style="display: none;">
+<div class="c-form-item js-jobVersion-2 colWidth" style="display: none;">
 	<label for="jobVersion2">Version</label>
 	<input type="text" id="jobVersion2" name="jobVersion2" value="">
+	<strong>e.g. XX</strong>
 </div>
 
-<div class="c-form-item small">
+<div class="c-form-item colWidth">
 	<label for="jobHours2">Hours
 		<span>[Min. 0.5 - Max. 12]</span>
 	</label>
@@ -471,14 +473,14 @@ endif;
 		class="js-jobHours-2">
 </div>
 
-<div class="c-form-item date">
+<div class="c-form-item colWidth">
 	<label for="jobDate2">Date</label>
 	<input id="jobDate2" name="jobDate2" value="" class="js-jobDate-2 js-date-picker">
 </div>
 
 <div class="action">
 	<a href="javascript:void(0);" class="c-btn btn--emp js-updateBtn">
-		<i class="fa"></i>Update</a>
+		Update</a>
 		<input type="hidden" name="updateRecordID" class="updateRecordID"
 			id="updateRecordID">
 </div>
@@ -557,8 +559,8 @@ endif;
 <script src="js/vendor/transition.js"></script>
 <script src="js/vendor/moment.min.js"></script>
 <script src="js/vendor/bootstrap-datetimepicker.min.js"></script>
-<script src="js/main.js?version=0.001"></script>
-<script src="js/custom.js?version=0.001"></script>
+<script src="js/main.js?version=0.002"></script>
+<script src="js/custom.js?version=0.002"></script>
 
 <?php
 if($timeCheck == 1):
