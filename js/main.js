@@ -106,6 +106,10 @@ $(function () {
 	        "order": [[ 5, "desc" ]]
 	    } );
 
+	    $('.js-data-table-4').DataTable( {
+	        "order": [[ 6, "desc" ]]
+	    } );
+
 	});
 
 

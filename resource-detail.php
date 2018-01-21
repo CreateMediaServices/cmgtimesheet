@@ -177,7 +177,7 @@ $detailURL = "export-resource-detail.php?queryString=".$queryString;
 			<div class="row">
 				<div class="col-md-12">
 
-<table class="js-data-table-3 c-table-1" data-display-length='50'>
+<table class="js-data-table-4 c-table-1" data-display-length='50'>
 	<thead>
 		<tr>
 			<th>User</th>
