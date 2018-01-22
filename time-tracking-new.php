@@ -169,7 +169,7 @@ unset($totalRecords);
 <link rel="stylesheet" href="css/datatables.min.css">
 <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/custom.css?version=0.002">
+<link rel="stylesheet" href="css/custom.css?version=0.003">
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 <style>
@@ -327,7 +327,7 @@ endwhile;
 		value="<?php echo($siteBaseURL.'/updateTime-new.php'); ?>">
 
 	<input type="hidden" name="deleteURL" id="deleteURL"
-		value="<?php echo($siteBaseURL.'/deleteTime-new.php'); ?>">
+		value="<?php echo($siteBaseURL.'/deleteTime.php'); ?>">
 
 	<input type="hidden" name="userNameValue" id="userNameValue"
 		value="<?php echo($uNameValue); ?>">
@@ -406,6 +406,9 @@ if ($totalRecordsSelect > 0) :
 			<td>
 				<a href="#searchRecord"
 					class="js-open-popup js-search-record">Edit</a>
+				&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+				<a href="#deleteRecord"
+					class="js-open-popup js-search-delete">Delete</a>
 				<input type="hidden" value="<?php echo($uID[$counter]); ?>"
 					name="recordID" class="recordID">
 				<input type="hidden" value="<?php echo($jobTypeIDSelect[$counter]); ?>"
@@ -493,15 +496,17 @@ endif;
     <div class="overlay js-close-popup"></div>
     <div class="c-popup-1 popup" id="deleteRecord">
         <div class="wrapper">
-        	<div class="c-form-sty form-sty--1 form--white">
+        	<div class="c-form-sty form-sty--1 form--white" style="font-size: 14px;">
                 <div class="title">Are you sure?</div>
                 <div class="sub-title">You are about to remove your task</div>
                 <div class="action action2">
                     <a href="javascript:void(0);"
                     	class="c-btn btn--sm btn--a btn--blue js-close-popup">No</a>
                     <a href="javascript:void(0)"
-                    	class="c-btn btn--sm btn--a js-close-popup js-delete-record">
+                    	class="c-btn btn--sm btn--a js-close-popup js-deleteBtn">
                     	Yes
+                    <input type="hidden" name="deleteRecordID" class="deleteRecordID"
+						id="deleteRecordID">
                     </a>
                 </div>
             </div>
@@ -559,8 +564,8 @@ endif;
 <script src="js/vendor/transition.js"></script>
 <script src="js/vendor/moment.min.js"></script>
 <script src="js/vendor/bootstrap-datetimepicker.min.js"></script>
-<script src="js/main.js?version=0.002"></script>
-<script src="js/custom.js?version=0.002"></script>
+<script src="js/main.js?version=0.003"></script>
+<script src="js/custom.js?version=0.003"></script>
 
 <?php
 if($timeCheck == 1):

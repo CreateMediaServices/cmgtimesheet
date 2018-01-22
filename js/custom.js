@@ -233,9 +233,6 @@ $('.js-add-client').click(function () {
 
 });
 
-
-
-
 $('.js-updateBtn').click(function () {
 
 	var clients = $('#clients2');
@@ -428,8 +425,7 @@ $('.js-search-record').click(function () {
 	var jobVersion = $(this).parent().parent().find('.jobVersion').html();
 	var jobHours = $(this).parent().parent().find('.jobHours').html();
 	var jobDate = $(this).parent().parent().find('.jobDate').html();
-	var recordID = $(this).parent().find('.recordID').val();
-	var recordID = $(this).parent().find('.recordID').val();
+	var recordID = $(this).parent().find('.recordID').val();	
 	var recordJobTypeID = $(this).parent().find('.recordJobTypeID').val();
 	var recordClientID = $(this).parent().find('.recordClientID').val();	
 	var targetURL = $('#editURL').val();
@@ -466,11 +462,9 @@ $('.js-search-record').click(function () {
             $('.js-jobHours-2').val(jobHours);
             $('.js-jobDate-2').val(jobDate);
 
-            if(result.jobVersion > 0){            	
-
+            if(result.jobVersion > 0){
             	$('.js-JobNumber-2').fadeIn('fast');
-            	$('.js-jobVersion-2').fadeIn('fast');
-            	
+            	$('.js-jobVersion-2').fadeIn('fast');            	
             }
             
             $('.updateRecordID').val(recordID);
@@ -483,15 +477,16 @@ $('.js-search-record').click(function () {
 $('.js-search-delete').click(function () {
 
 	var recordID = $(this).parent().find('.recordID').val();
-    $('.updateRecordID').val(recordID);	
+    $('.deleteRecordID').val(recordID);	
 
 });
 
 
-$('.js-delete-record').click(function () {
+$('.js-deleteBtn').click(function () {
 
-	var recordID = $('.updateRecordID').val();
-	var targetURL = $('#deleteURL').val();
+	var recordID = $('.deleteRecordID').val();
+	var siteBaseURL = $('#deleteURL').val();
+	var targetURL = $('#targetURL').val();		
 
     $('.updateRecordID').val(recordID);
 
@@ -499,7 +494,7 @@ $('.js-delete-record').click(function () {
 
     $.ajax({
 		type: "POST",
-		url: targetURL,
+		url: siteBaseURL,
 		data: q,
 		cache: false,
 		success: function (result) {
