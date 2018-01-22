@@ -249,6 +249,8 @@ $('.js-updateBtn').click(function () {
 	var siteBaseURL = $('#updateURL').val();
 	var targetURL = $('#targetURL').val();	
 	var clientCheck = $('#clientCheck').val();
+	var userName = $('#userNameValue').val();
+
 	var checkError = 0;
 
 	clients.parent().removeClass('error');
@@ -298,6 +300,7 @@ $('.js-updateBtn').click(function () {
 		q += '&jobtype=' + jobtype.val();
 		q += '&recordID=' + recordID;
 		q += '&jobDate=' + jobDate.val();
+		q += '&userName=' + userName;
 
 		$.ajax({
 			type: "POST",

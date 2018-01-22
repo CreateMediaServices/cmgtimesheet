@@ -6,10 +6,10 @@ include("config.php");
 $clientsValue = $_POST['clients'];
 $jobTitleValue = $_POST['jobtype'];
 $jobIDValue = $_POST['jobID'];
-
 $jobHoursValue = $_POST['jobHours'];
 $recordID = $_POST['recordID'];
 $created_atValue = $_POST['jobDate'];
+$userNameValue = $_POST['userName'];
 
 if(isset( $_POST['jobVersion'] ) && $_POST['jobVersion'] > 0 ){
     $jobVersionValue = $_POST['jobVersion'];
@@ -18,7 +18,7 @@ if(isset( $_POST['jobVersion'] ) && $_POST['jobVersion'] > 0 ){
 }
 
 $sql = "SELECT * FROM cmg_timetracker 
-        WHERE jobDate='".$created_atValue."' AND id <>".$recordID;
+        WHERE jobDate='".$created_atValue."' AND id <>".$recordID." AND userName ='".$userNameValue."'";
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
 $jobHours = 0;
@@ -29,7 +29,7 @@ endwhile;
 
 $jobHours += $jobHoursValue;
 
-$userNameValue = $_SESSION['uName'];
+// $userNameValue = $_SESSION['uName'];
 if($jobHours > 13){
     echo("100");
 }else if($userNameValue){
