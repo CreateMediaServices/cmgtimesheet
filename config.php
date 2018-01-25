@@ -16,7 +16,7 @@ $db = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password,$mysql_databa
 date_default_timezone_set('ASIA/DUBAI'); // CDT
 
 // $siteBaseURL = "http://clients.createmedia-group.com/cmg/timesheet";
-$siteBaseURL = "http://localhost/timesheet-new/live";
+$siteBaseURL = "http://localhost/cmg-timesheet";
 
 
 
