@@ -285,6 +285,12 @@ endwhile;
 		<option value="0">Select Job Title</option>
 	</select>
 </div>
+
+<div class="c-form-item js-jobtype-new colWidth1" style="display: none;">
+	<label for="jobtype-new">Job Title</label>
+	<input type="text" id="jobtype-new" name="jobtype-new" value="">	
+</div>
+
 <div class="c-form-item js-JobID colWidth1" style="display: none;">
 	<label for="jobID">Job Number</label>
 	<input type="text" id="jobID" name="jobID" value="">
@@ -448,12 +454,16 @@ endif;
 	</select>
 </div>
 
-<div class="c-form-item large">
+<div class="c-form-item large js-jobtype2">
 	<label for="jobtype2">Job Title</label>
-	<select style="width: 100%" name="jobtype2" id="jobtype2"
-		class="js-jobtype-2">
+	<select style="width: 100%" name="jobtype2" id="jobtype2">
 		<option value="0">Select Job Type</option>
 	</select>
+</div>
+
+<div class="c-form-item js-jobtype-new-2 colWidth1" style="display: none;">
+	<label for="jobtype-new2">Job Title</label>
+	<input type="text" id="jobtype-new2" name="jobtype-new2" value="">	
 </div>
 
 <div class="c-form-item js-JobID-2 js-JobNumber-2 colWidth1" style="display: none;">

@@ -3,6 +3,7 @@
 session_start();
 
 include("config.php");
+
 $clientsValue = $_POST['clients'];
 $jobTitleValue = $_POST['jobtype'];
 $jobIDValue = $_POST['jobID'];
@@ -10,6 +11,11 @@ $jobHoursValue = $_POST['jobHours'];
 $recordID = $_POST['recordID'];
 $created_atValue = $_POST['jobDate'];
 $userNameValue = $_POST['userName'];
+
+if($clientsValue == 24){
+    $jobTitleValue = 923; 
+    $jobIDValue = $_POST['jobtypeNew']; 
+}
 
 if(isset( $_POST['jobVersion'] ) && $_POST['jobVersion'] > 0 ){
     $jobVersionValue = $_POST['jobVersion'];

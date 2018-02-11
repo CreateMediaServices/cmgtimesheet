@@ -12,6 +12,11 @@ $jobHoursValue = $_POST['jobHours'];
 $created_atValue = $_POST['jobDate'];
 $userNameValue = $_POST['userName'];
 
+if($clientsValue == 24){
+    $jobTitleValue = 923; 
+    $jobIDValue = $_POST['jobtypeNew']; 
+}
+
 $sql = "SELECT sum(jobHours) as jobHour FROM cmg_timetracker 
         WHERE jobDate='".$created_atValue."' AND userName ='".$userNameValue."'";
 $result = $db->query( $sql );
@@ -40,6 +45,7 @@ if($jobHoursValue2 > 12){
             (clientID, userName, jobTypeID, jobID, jobVersion, jobHours, jobDate) 
         VALUES (:clientID, :userName, :jobTypeID, :jobID, :jobVersion,
             :jobHours, :jobDate)");
+        
         $stmt->bindParam(':clientID', $clientID);
     	$stmt->bindParam(':userName', $userName);
         $stmt->bindParam(':jobTypeID', $jobTypeID);
