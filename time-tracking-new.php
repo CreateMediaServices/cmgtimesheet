@@ -233,10 +233,15 @@ if( $uTypeValue == 1 ){
 		</a>
 		<ul>
 			<li>
+				<a href="resource-list.php" class="c-btn btn--blue u-fr">
+					<i class="fa fa-line-chart"></i>Resource by Users
+				</a>
+			</li>
+			<li>
 				<a href="resource-detail.php" class="c-btn btn--blue u-fr">
 					<i class="fa fa-line-chart"></i>Resource detail
 				</a>
-			</li>			
+			</li>						
 		</ul>
 	</div>
 <?php 

@@ -70,7 +70,8 @@ $queryString='';
 $queryString = '&startDate='.$startDate;
 $queryString .= '&endDate='.$endDate;
 
-$sqlTime = "SELECT sum(jobHours) as SumJobHours, clientID, jobTypeID FROM cmg_timetracker 
+$sqlTime = "SELECT sum(jobHours) as SumJobHours, clientID, jobTypeID 
+				FROM cmg_timetracker 
 				WHERE userName='" . $userName . "' AND
 				(jobDate >='".$startDate."' AND jobDate <='".$endDate."')
 				GROUP BY jobTypeID
