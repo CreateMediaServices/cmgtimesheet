@@ -23,7 +23,7 @@ if ( !( $uNameValue ) ):
 endif;
 
 $sqlUser = "SELECT * FROM cmg_user
-			WHERE uActive =1";
+			WHERE uEmailStatus =1";
 $resultUser = $db->query( $sqlUser );
 $counter = 0;
 
