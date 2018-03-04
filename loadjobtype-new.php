@@ -29,6 +29,8 @@ if($dID == 3){
 	$dIDs = implode(', ', array('1', '2', '3'));
 }else if($dID == 4){
 	$dIDs = implode(', ', array('1', '2', '4', '6'));
+}else if($dID == 18){
+	$dIDs = implode(', ', array('2', '8'));
 }
 
 $sql = "SELECT * FROM cmg_dept WHERE id IN(".$dIDs.")";
