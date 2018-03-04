@@ -5,22 +5,6 @@ $uNameValue = $_SESSION[ 'uName' ];
 
 include( 'config.php' );
 
-$sql = "SELECT * FROM cmg_dept";
-$result = $db->query( $sql );
-$totalRecords = $result->num_rows;
-$counter = 0;
-
-while ( $row = $result->fetch_assoc() ):
-	$uDeptID[$counter] = $row[ "id" ];
-	$uDeptName[$counter] = $row[ "deptName" ];
-	$counter++;
-endwhile;
-
-unset($sql);
-unset($result);
-unset($totalRecords);
-unset($row);
-
 $sql = "SELECT * FROM cmg_clients";
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
@@ -29,6 +13,22 @@ $counter = 0;
 while ( $row = $result->fetch_assoc() ):
 	$uClientId[$counter] = $row[ "id" ];
 	$uClientName[$counter] = $row[ "clientName" ];
+	$counter++;
+endwhile;
+
+unset($sql);
+unset($result);
+unset($totalRecords);
+unset($row);
+
+$sql = "SELECT * FROM cmg_dept";
+$result = $db->query( $sql );
+$totalRecords = $result->num_rows;
+$counter = 0;
+
+while ( $row = $result->fetch_assoc() ):
+	$uDeptId[$counter] = $row[ "id" ];
+	$uDeptName[$counter] = $row[ "deptName" ];
 	$counter++;
 endwhile;
 
@@ -101,7 +101,7 @@ endwhile;
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content-header">
-                                <h1 class="title">ADD JOB</h1>
+                                <h1 class="title">ADD CLIENT</h1>
                             </div>
 
                             <form class="c-form-sty-1">
@@ -115,9 +115,9 @@ endwhile;
                                                     	<option value="0">Select Department</option>
 <?php 
 	$counter=0;
-	while($counter < sizeof($uDeptID) ) :
+	while($counter < sizeof($uDeptId) ) :
 ?>
-														<option value="<?php echo $uDeptID[$counter]; ?>"><?php echo $uDeptName[$counter]; ?></option>
+														<option value="<?php echo $uDeptId[$counter]; ?>"><?php echo $uDeptName[$counter]; ?></option>
 <?php
 		$counter++;
 	endwhile;
@@ -142,29 +142,27 @@ endwhile;
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="c-form-item">
-                                                    <label for="jobType">Job Title</label>
-                                                    <input type="text" id="jobTitle" name="jobTitle">
-                                                </div>
-                                            </div>
                                             
                                             <div class="col-md-3">
                                                 <div class="c-form-item">
-                                                  	<label for="clients">&nbsp;</label>                                                   	
-                                                   	<a href="javascript:void(0);" class="c-btn btn--emp js-add-jobtype"><i class="fa"></i>Add Job Title</a>                                                    
-                                                    <input type="hidden" name="siteBaseURL" id="siteBaseURL" value="<?php echo($siteBaseURL.'/addJobType-new.php'); ?>">													
+                                                   	<label>&nbsp;</label>
+                                                    <a href="javascript:void(0);" class="c-btn btn--emp js-update-dept"><i class="fa"></i>Update client department</a>
+                                                    <input type="hidden" name="siteBaseURL" id="siteBaseURL" value="<?php echo($siteBaseURL.'/addclientDept.php'); ?>">
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                         	<div class="col-md-12">
-                                        		<div class="success">Job Type added</div>
+                                        		<div class="success">Client added</div>
                                         		<div class="fail">Error</div>
                                         	</div>
                                         </div>
+
                                     </div>
                                 </div>
+
+
                             </form>
                         </div>
                     </div>

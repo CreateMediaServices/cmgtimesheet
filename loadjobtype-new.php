@@ -4,14 +4,15 @@ $clients = $_POST[ 'clients' ];
 
 include( 'config.php' );
 
-$sql = "SELECT * FROM cmg_clients where id =" . $clients;
+$dIDs = array();
+
+$sql = "SELECT * FROM cmg_clients where id=" . $clients;
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
 $counter = 0;
 
 while ( $row = $result->fetch_assoc() ):
-	$dID = $row[ "deptID" ];
-	// $clientJobId[ $counter ] = $row[ "clientID" ];
+	$dID = $row[ "deptID" ];	
 	$JobIDs = $row[ "JobID" ];	
 	$counter++;
 endwhile;
@@ -21,17 +22,22 @@ unset($row);
 unset($result);
 unset($totalRecords);
 
-$dIDs = $dID;
+$sql = "SELECT * FROM cmg_client_depart where clientID=" . $clients;
+$result = $db->query( $sql );
+$totalRecords = $result->num_rows;
+$counter = 0;
 
-if($dID == 3){
-	$dIDs = implode(', ', array('1', '2'));
-}else if($dID == 5){
-	$dIDs = implode(', ', array('1', '2', '3'));
-}else if($dID == 4){
-	$dIDs = implode(', ', array('1', '2', '4', '6'));
-}else if($dID == 8){
-	$dIDs = implode(', ', array('2', '8'));
-}
+while ( $row = $result->fetch_assoc() ):
+	$dIDs[$counter] = $row[ "deptID" ];
+	$counter++;
+endwhile;
+
+unset($sql);
+unset($row);
+unset($result);
+unset($totalRecords);
+
+$dIDs = implode(', ', $dIDs);
 
 $sql = "SELECT * FROM cmg_dept WHERE id IN(".$dIDs.")";
 $result = $db->query( $sql );

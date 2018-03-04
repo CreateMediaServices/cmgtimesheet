@@ -215,8 +215,18 @@ if( $uTypeValue == 1 ){
 				</a>
 			</li>
 			<li>
+				<a href="add-dept.php" class="c-btn btn--blue u-fr">
+					<i class="fa fa-user-o"></i>Add Department
+				</a>
+			</li>
+			<li>
 				<a href="add-client-new.php" class="c-btn btn--blue u-fr">
 					<i class="fa fa-user-o"></i>Add Client
+				</a>
+			</li>
+			<li>
+				<a href="add-client-dept.php" class="c-btn btn--blue u-fr">
+					<i class="fa fa-user-o"></i>Update Client Department
 				</a>
 			</li>
 			<li>

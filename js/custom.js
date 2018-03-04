@@ -248,6 +248,95 @@ $('.js-add-client').click(function () {
 
 });
 
+
+$('.js-add-dept').click(function () {
+	
+	var deptName = $('#deptName');	
+	var siteBaseURL = $('#siteBaseURL').val();	
+	var checkError = 0;
+
+	$('.success').fadeOut('fast');
+	$('.fail').fadeOut('fast');
+
+	deptName.parent().removeClass('error');	
+
+	if (deptName.val() == '' ) {
+		deptName.parent().addClass('error');
+		checkError = 1;
+		$('.fail').fadeIn('slow');
+	}
+
+	if (checkError == 0) {
+
+		var q = 'deptName=' + deptName.val();		
+		
+		$.ajax({
+			type: "POST",
+			url: siteBaseURL,
+			data: q,
+			cache: false,
+			success: function (result) {
+				if(result == 'success'){
+					$('.success').fadeIn('slow');	
+				}		
+			}
+		});
+
+	}
+
+});
+
+
+$('.js-update-dept').click(function () {
+	
+	var deptID = $('#deptID');
+	var clientID = $('#clientID');		
+	var siteBaseURL = $('#siteBaseURL').val();	
+	var checkError = 0;
+
+	$('.success').fadeOut('fast');
+	$('.fail').fadeOut('fast');
+
+	deptID.parent().removeClass('error');
+	clientID.parent().removeClass('error');		
+
+	if (deptID.val() == '0' || deptID.val() == '') {
+		deptID.parent().addClass('error');
+		checkError = 1;
+		$('.fail').fadeIn('slow');
+	}
+
+	if (clientID.val() == '' ) {
+		clientID.parent().addClass('error');
+		checkError = 1;
+		$('.fail').fadeIn('slow');
+	}
+
+	if (checkError == 0) {
+
+		var q = 'deptID=' + deptID.val();		
+		q += '&clientID=' + clientID.val();
+		
+		$.ajax({
+			type: "POST",
+			url: siteBaseURL,
+			data: q,
+			cache: false,
+			success: function (result) {
+				if(result == 'success'){
+					$('.success').fadeIn('slow');	
+				}		
+			}
+		});
+
+	}
+
+});
+
+
+
+
+
 $('.js-updateBtn').click(function () {
 
 	var clients = $('#clients2');

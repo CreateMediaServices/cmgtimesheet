@@ -5,33 +5,6 @@ $uNameValue = $_SESSION[ 'uName' ];
 
 include( 'config.php' );
 
-$sql = "SELECT * FROM cmg_dept";
-$result = $db->query( $sql );
-$totalRecords = $result->num_rows;
-$counter = 0;
-
-while ( $row = $result->fetch_assoc() ):
-	$uDeptID[$counter] = $row[ "id" ];
-	$uDeptName[$counter] = $row[ "deptName" ];
-	$counter++;
-endwhile;
-
-unset($sql);
-unset($result);
-unset($totalRecords);
-unset($row);
-
-$sql = "SELECT * FROM cmg_clients";
-$result = $db->query( $sql );
-$totalRecords = $result->num_rows;
-$counter = 0;
-
-while ( $row = $result->fetch_assoc() ):
-	$uClientId[$counter] = $row[ "id" ];
-	$uClientName[$counter] = $row[ "clientName" ];
-	$counter++;
-endwhile;
-
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -108,58 +81,24 @@ endwhile;
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                        	<div class="col-md-3">
+                                            <div class="col-md-9">
                                                 <div class="c-form-item">
-                                                    <label for="deptID">Department</label>
-                                                    <select style="width: 100%" name="deptID" id="deptID">
-                                                    	<option value="0">Select Department</option>
-<?php 
-	$counter=0;
-	while($counter < sizeof($uDeptID) ) :
-?>
-														<option value="<?php echo $uDeptID[$counter]; ?>"><?php echo $uDeptName[$counter]; ?></option>
-<?php
-		$counter++;
-	endwhile;
-?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        	<div class="col-md-3">
-                                                <div class="c-form-item">
-                                                    <label for="clientID">Client Name</label>
-                                                    <select style="width: 100%" name="clientID" id="clientID">
-                                                    	<option value="0">Select client</option>
-<?php 
-	$counter=0;
-	while($counter < sizeof($uClientId) ) :
-?>
-														<option value="<?php echo $uClientId[$counter]; ?>"><?php echo $uClientName[$counter]; ?></option>
-<?php
-		$counter++;
-	endwhile;
-?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="c-form-item">
-                                                    <label for="jobType">Job Title</label>
-                                                    <input type="text" id="jobTitle" name="jobTitle">
+                                                    <label for="deptName">Department</label>
+                                                    <input type="text" id="deptName" name="deptName">
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-3">
                                                 <div class="c-form-item">
                                                   	<label for="clients">&nbsp;</label>                                                   	
-                                                   	<a href="javascript:void(0);" class="c-btn btn--emp js-add-jobtype"><i class="fa"></i>Add Job Title</a>                                                    
-                                                    <input type="hidden" name="siteBaseURL" id="siteBaseURL" value="<?php echo($siteBaseURL.'/addJobType-new.php'); ?>">													
+                                                   	<a href="javascript:void(0);" class="c-btn btn--emp js-add-dept"><i class="fa"></i>Add Department</a>                                                    
+                                                    <input type="hidden" name="siteBaseURL" id="siteBaseURL" value="<?php echo($siteBaseURL.'/addDept.php'); ?>">													
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                         	<div class="col-md-12">
-                                        		<div class="success">Job Type added</div>
+                                        		<div class="success">Department added</div>
                                         		<div class="fail">Error</div>
                                         	</div>
                                         </div>
