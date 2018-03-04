@@ -67,7 +67,7 @@ unset($row);
 unset($result);
 unset($totalRecords);
 
-$sql = "SELECT * FROM cmg_jobtypes WHERE deptID IN (".$dIDs.") AND clientID=".$clients;
+$sql = "SELECT * FROM cmg_jobtypes WHERE deptID IN (".$dIDs.") AND clientID=".$clients." ORDER BY jobTitle ASC";
 $result = $db->query( $sql );
 $totalRecords = $result->num_rows;
 $counter = 0;
