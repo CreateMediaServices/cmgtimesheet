@@ -22,35 +22,35 @@ unset($row);
 unset($result);
 unset($totalRecords);
 
-$sql = "SELECT * FROM cmg_client_depart where clientID=" . $clients;
-$result = $db->query( $sql );
-$totalRecords = $result->num_rows;
-$counter = 0;
+// $sql = "SELECT * FROM cmg_client_depart where clientID=" . $clients;
+// $result = $db->query( $sql );
+// $totalRecords = $result->num_rows;
+// $counter = 0;
 
-while ( $row = $result->fetch_assoc() ):
-	$dIDs[$counter] = $row[ "deptID" ];
-	$counter++;
-endwhile;
+// while ( $row = $result->fetch_assoc() ):
+// 	$dIDs[$counter] = $row[ "deptID" ];
+// 	$counter++;
+// endwhile;
 
-unset($sql);
-unset($row);
-unset($result);
-unset($totalRecords);
+// unset($sql);
+// unset($row);
+// unset($result);
+// unset($totalRecords);
 
-$dIDs = implode(', ', $dIDs);
+// $dIDs = implode(', ', $dIDs);
 
 
-// $dIDs = $dID;
+$dIDs = $dID;
 
-// if($dID == 3){
-// 	$dIDs = implode(', ', array('1', '2'));
-// }else if($dID == 5){
-// 	$dIDs = implode(', ', array('1', '2', '3'));
-// }else if($dID == 4){
-// 	$dIDs = implode(', ', array('1', '2', '4', '6'));
-// }else if($dID == 8){
-// 	$dIDs = implode(', ', array('2', '8'));
-// }
+if($dID == 3){
+	$dIDs = implode(', ', array('1', '2'));
+}else if($dID == 5){
+	$dIDs = implode(', ', array('1', '2', '3'));
+}else if($dID == 4){
+	$dIDs = implode(', ', array('1', '2', '4', '6'));
+}else if($dID == 8){
+	$dIDs = implode(', ', array('2', '8'));
+}
 
 $sql = "SELECT * FROM cmg_dept WHERE id IN(".$dIDs.")";
 $result = $db->query( $sql );
