@@ -15,9 +15,12 @@ $db = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password,$mysql_databa
 
 date_default_timezone_set('ASIA/DUBAI'); // CDT
 
-$siteBaseURL = "http://clients.createmedia-group.com/cmg/time-sheet";
-//$siteBaseURL = "http://localhost/cmg/timesheet";
+$serverHostName = $_SERVER['SERVER_NAME'];
 
-
+if($serverHostName == "localhost"){
+	$siteBaseURL = "http://localhost/cmg/timesheet";
+}else{
+	$siteBaseURL = "http://clients.createmedia-group.com/cmg/time-sheet";	
+}
 
 ?>
